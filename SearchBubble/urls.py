@@ -11,8 +11,9 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'app.views.home', name='home'),
-    url(r'^contact$', 'app.views.contact', name='contact'),
-    url(r'^about', 'app.views.about', name='about'),
+    url(r'^elements/all/$', 'app.views.all_elements', name='all_elements'),
+    url(r'^category/all/$', 'app.views.all_categories', name='all_categories'), 
+    url(r'^category/(?P<id>[-\w]+)/$', 'app.views.category', name='category_elements'),
     url(r'^login/$',
         'django.contrib.auth.views.login',
         {
