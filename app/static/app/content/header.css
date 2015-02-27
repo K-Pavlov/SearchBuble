@@ -12,24 +12,28 @@
         max-height: 40px;
     }
 
-    #header .demo-title {
+    #header .title {
         display: block;
         float: left;
         padding-left: 40px;
     }
 
-    #header .demo-links {
+    #header .links {
         display: block;
         float: right;
         padding-right: 20px;
     }
 
-        #header .demo-links a {
+        #header .links a {
             font-size: 14px;
             color: #f26c4f;
             text-decoration: none;
             margin-right: 15px;
         }
+
+    #header .links .username{
+        font-size: 18px;
+    }
 
     #header a {
         display: block;
