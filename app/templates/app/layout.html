@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>mPurpose - Multipurpose Feature Rich Bootstrap Template</title>
+        <title>{{ title }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -26,39 +26,35 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-        
+        <div id="header">
+            <div class="title">
+                <h1>
+                    <em>Find the best styles there are!</em>
+                </h1>
+            </div>
+            <div class="links">
+                {% include 'app/loginpartial.html' %}
+            </div>
+        </div>        
         <!-- Navigation & Logo-->
         <div class="mainmenu-wrapper">
 	        <div>
-	        	<div id="header">
-					<a class="brand">
-                        Search Bubble
-                    </a>
-		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="index.html">Search Bubble</a></li>
+                        <li class="logo-wrapper"><a href="{% url 'home' %}">Search Buble</a></li>
 						<li class="active">
-							<a href="index.html">Home</a>
+							<a href="{% url 'home' %}">Home</a>
 						</li>
 						<li>
-							<a href="features.html">Features</a>
-						</li>
-						<li class="has-submenu">
-							<a href="#">Pages +</a>
-							<div class="mainmenu-submenu">
-								<div class="mainmenu-submenu-inner">
-								</div><!-- /mainmenu-submenu-inner -->
-							</div><!-- /mainmenu-submenu -->
+							<a href="{% url 'all_elements' %}">Elements</a>
 						</li>
 						<li>
-							<a href="credits.html">Credits</a>
-						</li>
+                           <a href="{% url 'all_categories' %}">Categories</a> 
+                        </li>
 					</ul>
 				</nav>
 			</div>
 		</div>
-
         <div>
             {% block content %}{% endblock %}
         </div>
@@ -66,29 +62,18 @@
 	    <!-- Footer -->
 	    <div class="footer">
 	    	<div class="container">
-		    	<div class="row">
-		    		<div class="col-footer col-md-3 col-xs-6">
-		    			<h3>Our Latest Work</h3>
-		    			<div class="portfolio-item">
-							<div class="portfolio-image">
-								<a href="page-portfolio-item.html"><img src="img/portfolio6.jpg" alt="Project Name"></a>
-							</div>
-						</div>
-		    		</div>
-		    		<div class="col-footer col-md-3 col-xs-6">
-		    			<h3>Navigate</h3>
-		    			<ul class="no-list-style footer-navigate-section">
-		    				<li><a href="page-blog-posts.html">Blog</a></li>
-		    				<li><a href="page-portfolio-3-columns-2.html">Portfolio</a></li>
-		    				<li><a href="page-products-3-columns.html">eShop</a></li>
-		    				<li><a href="page-services-3-columns.html">Services</a></li>
-		    				<li><a href="page-pricing.html">Pricing</a></li>
-		    				<li><a href="page-faq.html">FAQ</a></li>
-		    			</ul>
-		    		</div>
-		    		
+		    	<div class="row">		    		
 		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>Contacts</h3>
+		    			<h3>Presian Abarov</h3>
+		    			<p class="contact-us-details">
+	        				<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br/>
+	        				<b>Phone:</b> +44 123 654321<br/>
+	        				<b>Fax:</b> +44 123 654321<br/>
+	        				<b>Email:</b> <a href="mailto:getintoutch@yourcompanydomain.com">getintoutch@yourcompanydomain.com</a>
+	        			</p>
+		    		</div>
+                    <div class="col-footer col-md-4 col-xs-6">
+		    			<h3>Kaloyan Pavlov</h3>
 		    			<p class="contact-us-details">
 	        				<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br/>
 	        				<b>Phone:</b> +44 123 654321<br/>

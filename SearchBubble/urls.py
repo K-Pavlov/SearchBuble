@@ -3,19 +3,17 @@ Definition of urls for SearchBubble.
 """
 
 from datetime import datetime
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
+from django.contrib import admin
 from app.forms import BootstrapAuthenticationForm
 
-# Uncomment the next lines to enable the admin:
-# from django.conf.urls import include
-# from django.contrib import admin
-# admin.autodiscover()
-
+admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'app.views.home', name='home'),
-    url(r'^contact$', 'app.views.contact', name='contact'),
-    url(r'^about', 'app.views.about', name='about'),
+    url(r'^elements/all/$', 'app.views.all_elements', name='all_elements'),
+    url(r'^category/all/$', 'app.views.all_categories', name='all_categories'), 
+    url(r'^category/(?P<id>[-\w]+)/$', 'app.views.category', name='category_elements'),
     url(r'^login/$',
         'django.contrib.auth.views.login',
         {
@@ -39,5 +37,5 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+     url(r'^admin/', include(admin.site.urls)),
 )

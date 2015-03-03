@@ -5,11 +5,12 @@ Definition of views.
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
+from django.shortcuts import Http404
+
+from models import Category, Element
 from datetime import datetime
 
 def home(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/index.html',
@@ -17,33 +18,50 @@ def home(request):
         {
             'title':'Home Page',
             'year':datetime.now().year,
+            'categories': Category.objects.all(),
         })
     )
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
+def all_elements(request):
     return render(
         request,
-        'app/contact.html',
+        'app/all.html',
         context_instance = RequestContext(request,
         {
-            'title':'Contact',
-            'message':'Your contact page.',
+            'title':'Home Page',
             'year':datetime.now().year,
+            'elements': Element.objects.all(),
+            'categories': Category.objects.all(),
         })
     )
 
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
+def all_categories(request):
     return render(
         request,
-        'app/about.html',
+        'app/all-categories.html',
         context_instance = RequestContext(request,
         {
-            'title':'About',
-            'message':'Your application description page.',
+          'title': '',
+          'year': datetime.now().year,
+          'categories': Category.objects.all()  
+        })
+    )
+
+def category(request, id):
+    try:
+        category = Category.objects.get(id=id)
+    except Category.DoesNotExist():
+        raise Http404
+
+    return render(
+        request,
+        'app/category.html',
+        context_instance = RequestContext(request,
+        {
+            'title':'Home Page',
             'year':datetime.now().year,
+            'name': category.name,
+            'elements': category.element_set.all(),
+            'categories': Category.objects.all()
         })
     )
